@@ -17,6 +17,11 @@ else
     solvers="$1"
 fi
 
+# CaDiCaL force refresh: delete local files before fetching
+if echo $solvers|grep -q "c"; then
+    rm -rf cadical cadical.zip
+fi
+
 #bash fetch_solvers.sh $solvers
 bash fetch_solvers_with_curl.sh $solvers
 
